@@ -17,7 +17,7 @@ class CreateEmployeeAction
             'address' => $employeeData->address,
             'birth_date' => $employeeData->birth_date,
             'password' => $employeeData->password,
-            'role' => $employeeData->role
+            'role' => $employeeData->role,
         ]);
     }
 }

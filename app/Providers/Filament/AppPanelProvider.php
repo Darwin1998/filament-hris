@@ -55,7 +55,7 @@ class AppPanelProvider extends PanelProvider
             ])
             ->navigationGroups([
                 NavigationGroup::make()
-                    ->label(fn () => trans('Management'))
+                    ->label(fn () => trans('Management')),
             ])
             ->navigationItems([
 

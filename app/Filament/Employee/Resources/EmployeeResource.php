@@ -3,15 +3,11 @@
 namespace App\Filament\Employee\Resources;
 
 use App\Filament\Employee\Resources\EmployeeResource\Pages;
-use App\Filament\Employee\Resources\EmployeeResource\RelationManagers;
 use Domain\Employee\Models\Employee;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EmployeeResource extends Resource
 {

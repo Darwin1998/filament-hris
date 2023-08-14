@@ -6,11 +6,14 @@ use Domain\Employees\Enums\EmployeeRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Employee extends Model
 {
-
-    use HasFactory,SoftDeletes;
+    use HasFactory;
+    use SoftDeletes;
+    use InteractsWithMedia;
 
     protected $fillable = [
         'first_name',
@@ -25,6 +28,6 @@ class Employee extends Model
 
     protected $casts = [
         'role' => EmployeeRoles::class,
-        'birth_date' => 'date'
+        'birth_date' => 'date',
     ];
 }
