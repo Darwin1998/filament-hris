@@ -25,7 +25,7 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
 
-            // $table->foreignId(Department::class);
+            $table->foreignId(Department::class);
         });
     }
 
