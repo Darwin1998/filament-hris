@@ -13,4 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/admin/login', 302);
+
+Route::view('/', 'welcome')->name('login');

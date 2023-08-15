@@ -6,10 +6,8 @@ use Spatie\LaravelSettings\Settings;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class SiteSettings extends Settings implements HasMedia
+class SiteSettings extends Settings
 {
-    use InteractsWithMedia;
-
     public ?string $name;
 
     public ?string $logo;
@@ -19,8 +17,4 @@ class SiteSettings extends Settings implements HasMedia
         return 'site-group';
     }
 
-    public function registerMediaCollections(): void
-    {
-        $this->addMediaCollection('logo')->useDisk('s3');
-    }
 }
