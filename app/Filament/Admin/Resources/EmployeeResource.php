@@ -12,6 +12,8 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class EmployeeResource extends Resource
@@ -61,10 +63,17 @@ class EmployeeResource extends Resource
                                 'manager' => 'Manager',
                                 'designer' => 'Designer',
                             ]),
+                        SpatieMediaLibraryFileUpload::make('profile_picture')
+                            ->disk('s3')
+                            ->downloadable()
+                            ->image()
+                            ->collection('profile_picture'),
                         SpatieMediaLibraryFileUpload::make('documents')
                             ->multiple()
+                            ->downloadable()
                             ->disk('s3')
-                            ,
+                            ->openable()
+                            ->collection('documents'),
                     ])->columns(2),
             ]);
     }
@@ -73,7 +82,12 @@ class EmployeeResource extends Resource
     {
         return $table
             ->columns([
-                //
+                SpatieMediaLibraryImageColumn::make('profile_picture')
+                    ->circular()
+                    ->collection('profile_picture'),
+                TextColumn::make('first_name'),
+                TextColumn::make('last_name'),
+                TextColumn::make('email'),
             ])
             ->filters([
                 //

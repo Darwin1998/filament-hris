@@ -34,5 +34,6 @@ class Employee extends Model implements HasMedia
     public function registerMediaCollections(): void
     {
         $this->addMediaCollection('documents')->useDisk('s3');
+        $this->addMediaCollection('profile_picture')->useDisk('s3');
     }
 }
