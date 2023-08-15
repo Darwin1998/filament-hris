@@ -3,8 +3,8 @@
 namespace App\Filament\Admin\Resources\EmployeeResource\Pages;
 
 use App\Filament\Admin\Resources\EmployeeResource;
+use Domain\Employee\Actions\CreateEmployeeAction;
 use Domain\Employee\DataTransferObjects\EmployeeData;
-use Domain\Employees\Actions\CreateEmployeeAction;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
