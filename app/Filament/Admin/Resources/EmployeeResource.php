@@ -7,6 +7,7 @@ use Domain\Employee\Models\Employee;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -60,6 +61,11 @@ class EmployeeResource extends Resource
                                 'manager' => 'Manager',
                                 'designer' => 'Designer',
                             ]),
+                        SpatieMediaLibraryFileUpload::make('documents')
+                            ->disk('s3')
+                            ->multiple()
+                            ->previewable()
+                            ->collection('documents'),
                     ])->columns(2),
             ]);
     }
