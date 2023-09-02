@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Pages;
+namespace App\Filament\Admin\Pages;
 
 use App\Settings\SiteSettings;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;

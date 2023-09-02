@@ -24,7 +24,7 @@ class EmployeeResource extends Resource
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $recordTitleAttribute = 'name';
+    protected static ?string $recordTitleAttribute = 'full_name';
 
     protected static bool $shouldSkipAuthorization = true;
 

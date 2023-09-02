@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Filament\App\Resources;
+namespace App\Filament\Admin\Resources;
 
-use App\Filament\App\Resources\DepartmentResource\Pages;
+use App\Filament\Admin\Resources\DepartmentResource\Pages;
 use Domain\Department\Models\Department;
+use Domain\Employee\Models\Employee;
+use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -15,11 +19,27 @@ class DepartmentResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    public static function getNavigationGroup(): ?string
+    {
+        return trans('Management');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                //
+                Section::make('New Department')
+                    ->schema([
+                        TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+
+                        Select::make('employees')
+                            ->multiple()
+                            ->searchable()
+                            ->required()
+                            ->options(Employee::all()->pluck('full_name', 'id')),
+                    ]),
             ]);
     }
 

@@ -3,8 +3,6 @@
 namespace App\Settings;
 
 use Spatie\LaravelSettings\Settings;
-use Spatie\MediaLibrary\HasMedia;
-use Spatie\MediaLibrary\InteractsWithMedia;
 
 class SiteSettings extends Settings
 {
@@ -16,5 +14,4 @@ class SiteSettings extends Settings
     {
         return 'site-group';
     }
-
 }
