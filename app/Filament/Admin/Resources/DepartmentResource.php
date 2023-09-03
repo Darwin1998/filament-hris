@@ -35,10 +35,20 @@ class DepartmentResource extends Resource
                             ->maxLength(255),
 
                         Select::make('employees')
+                            ->label(trans('Employees'))
                             ->multiple()
                             ->searchable()
                             ->required()
-                            ->options(Employee::all()->pluck('full_name', 'id')),
+                            ->formatStateUsing(function ($record) {
+                                $employees = [];
+
+                                foreach ($record->employees as $employee) {
+                                    $employees[] = $employee->full_name;
+                                }
+
+                                return $employees;
+                            })
+                            ->options(Employee::query()->pluck('full_name', 'id')),
                     ]),
             ]);
     }

@@ -13,6 +13,8 @@ class CreateEmployee extends CreateRecord
 {
     protected static string $resource = EmployeeResource::class;
 
+    protected static bool $canCreateAnother = false;
+
     protected function handleRecordCreation(array $data): Model
     {
         return DB::transaction(

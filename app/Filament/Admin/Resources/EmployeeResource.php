@@ -42,20 +42,30 @@ class EmployeeResource extends Resource
                         TextInput::make('first_name')
                             ->required()
                             ->maxLength(255),
+
                         TextInput::make('last_name')
-                            ->required(),
+                            ->required()
+                            ->maxLength(255),
+
                         TextInput::make('email')
+                            ->unique(ignoreRecord: true)
                             ->required()
                             ->email(),
+
                         TextInput::make('phone')
+                            ->unique(ignoreRecord: true)
                             ->required(),
+
                         TextInput::make('address')
                             ->required(),
+
                         DatePicker::make('birth_date')
                             ->required(),
+
                         TextInput::make('password')
                             ->password()
                             ->required(),
+
                         Select::make('role')
                             ->required()
                             ->options([
@@ -63,17 +73,20 @@ class EmployeeResource extends Resource
                                 'manager' => 'Manager',
                                 'designer' => 'Designer',
                             ]),
+
                         SpatieMediaLibraryFileUpload::make('profile_picture')
                             ->disk('s3')
                             ->downloadable()
                             ->image()
                             ->collection('profile_picture'),
+
                         SpatieMediaLibraryFileUpload::make('documents')
                             ->multiple()
                             ->downloadable()
                             ->disk('s3')
                             ->openable()
                             ->collection('documents'),
+
                     ])->columns(2),
             ]);
     }
