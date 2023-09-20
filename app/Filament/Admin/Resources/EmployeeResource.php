@@ -3,6 +3,7 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\EmployeeResource\Pages;
+use Domain\Department\Models\Department;
 use Domain\Employee\Models\Employee;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Section;
@@ -86,6 +87,10 @@ class EmployeeResource extends Resource
                             ->disk('s3')
                             ->openable()
                             ->collection('documents'),
+
+                        Select::make('departments')
+                            ->translateLabel()
+                            ->options(Department::query()->pluck('title','id'))
 
                     ])->columns(2),
             ]);

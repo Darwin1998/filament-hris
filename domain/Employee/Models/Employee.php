@@ -4,7 +4,6 @@ namespace Domain\Employee\Models;
 
 use Domain\Department\Models\Department;
 use Domain\Employee\Enums\EmployeeRoles;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -13,7 +12,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Employee extends Model implements HasMedia
 {
-    use HasFactory;
     use SoftDeletes;
     use InteractsWithMedia;
 
@@ -26,6 +24,7 @@ class Employee extends Model implements HasMedia
         'birth_date',
         'password',
         'role',
+        'department_id'
     ];
 
     protected $casts = [

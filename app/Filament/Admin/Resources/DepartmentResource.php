@@ -11,6 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class DepartmentResource extends Resource
@@ -33,22 +34,6 @@ class DepartmentResource extends Resource
                         TextInput::make('title')
                             ->required()
                             ->maxLength(255),
-
-                        Select::make('employees')
-                            ->label(trans('Employees'))
-                            ->multiple()
-                            ->searchable()
-                            ->required()
-                            ->formatStateUsing(function ($record) {
-                                $employees = [];
-
-                                foreach ($record->employees as $employee) {
-                                    $employees[] = $employee->full_name;
-                                }
-
-                                return $employees;
-                            })
-                            ->options(Employee::query()->pluck('full_name', 'id')),
                     ]),
             ]);
     }
@@ -57,7 +42,7 @@ class DepartmentResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('title')
             ])
             ->filters([
                 //
